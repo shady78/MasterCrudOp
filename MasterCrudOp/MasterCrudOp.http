@@ -1,0 +1,6 @@
+@MasterCrudOp_HostAddress = http://localhost:5181
+
+GET {{MasterCrudOp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

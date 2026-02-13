@@ -1,10 +1,15 @@
 using MasterCrudOp.Endpoints;
+using MasterCrudOp.Exceptions;
+using MasterCrudOp.Middleware;
 using MasterCrudOp.Persistence;
 using MasterCrudOp.Services;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddProblemDetails();
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+
 
 builder.Services.AddDbContext<MovieDbContex>(options =>
 {
@@ -19,6 +24,11 @@ builder.Services.AddTransient<IMovieService, MovieService>();
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
+
+app.UseExceptionHandler();
+
+//app.UseMiddleware<ExceptionHandlingMiddleware>();
+
 
 app.MapMovieEndpoints();
 

@@ -1,8 +1,10 @@
+using FluentValidation;
 using MasterCrudOp.Endpoints;
 using MasterCrudOp.Exceptions;
 using MasterCrudOp.Middleware;
 using MasterCrudOp.Persistence;
 using MasterCrudOp.Services;
+using MasterCrudOp.Validators;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 
@@ -19,6 +21,7 @@ builder.Services.AddDbContext<MovieDbContex>(options =>
 
 builder.Services.AddTransient<IMovieService, MovieService>();
 
+builder.Services.AddValidatorsFromAssemblyContaining<CreateMovieValidator>();
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();

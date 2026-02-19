@@ -1,5 +1,6 @@
 ﻿using MasterCrudOp.DTOs.Requests;
 using MasterCrudOp.Exceptions;
+using MasterCrudOp.Extensions;
 using MasterCrudOp.Services;
 
 namespace MasterCrudOp.Endpoints;
@@ -15,7 +16,8 @@ public static class MovieEndpoints
         {
             var movie = await service.CreateMovieAsync(command);
             return TypedResults.Created($"/api/movie/{movie.Id}", movie);
-        });
+        })
+         .AddValidation<CreateMovieDto>();
 
         //GET /api/movies => get all
         movieApi.MapGet("/", async (IMovieService service) =>
@@ -27,8 +29,8 @@ public static class MovieEndpoints
         // GET /api/movies/{id} => get by id
         movieApi.MapGet("/{id}", async (IMovieService service, Guid id) =>
         {
-              var movie = await service.GetMovieByIdAsync(id);
-            
+            var movie = await service.GetMovieByIdAsync(id);
+
             //return movie is null
             //? (IResult)TypedResults.NotFound(new { Message = $"Movie with ID {id} Not Found." })
             //: TypedResults.Ok(movie);
@@ -36,7 +38,7 @@ public static class MovieEndpoints
             return movie is null
              ? throw new NotFoundException("movie", id)
              : TypedResults.Ok(movie);
-           
+
         });
 
         // PUT /api/movies/{id} => update

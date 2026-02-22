@@ -45,6 +45,13 @@ public class MovieService : IMovieService
 
     public async Task<IEnumerable<MovieDto>> GetAllMoviesAsync()
     {
+        _logger.LogInformation("start get all movies");  /// Information
+        _logger.LogCritical("oops");   // Fatal 
+        _logger.LogDebug("nothing much to say");
+        //_logger.LogInformation("Invoke {Event} with ID as {Id}", "SomeEvent", Guid.NewGuid());
+        var ev = new { Name = "SomeEvent", Type = "Demo" };
+        _logger.LogInformation("Invoke {Event}", ev);
+        
         return await _context.Movies
              .AsNoTracking()
              .Select(movie => new MovieDto(

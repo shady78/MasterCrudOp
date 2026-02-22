@@ -1,0 +1,73 @@
+Structured Logging with Serilog in ASP.NET Core 10
+
+1 - Why Logging is important ?
+
+	- Monitoring
+	- Debugging
+	- Auditing/Tracing
+
+2 - Why Serilog ? 
+
+- Support structured logging
+- Sinks
+- Enrichers
+- High Performance cause async and batching 
+
+3 - what are the differences between Normal Logging and Structured Logging ?
+
+
+Getting Started with Serilog in ASP.NET Core 10
+
+- Install-Package Serilog.AspNetCore
+- Configuration (appsettings.json , Program.cs )
+
+
+Level	Usage
+Verbose	Verbose is the noisiest level, rarely (if ever) enabled for a production app.
+Debug	Debug is used for internal system events that are not necessarily observable from the outside, but useful when determining how something happened.
+Information	Information events describe things happening in the system that correspond to its responsibilities and functions.
+Warning	When service is degraded, endangered, or maybe behaving outside its expected parameters, Warning-level events are used.
+Error	When functionality is unavailable or expectations are broken, an Error event is used.
+Fatal	The most critical level, Fatal events demand immediate attention.
+
+
+
+
+
+Configuring Serilog + File Sink + Output Formatting
+
+We have 2 ways to make configuration for Serilog in ASP.NET Core 10
+  1 - Code-based configuration (Program.cs)
+  2 - Configuration-based configuration (appsettings.json)
+
+
+  Sink  
+
+
+
+  Structured Logging
+  timestamp
+  level
+  message
+  exception
+  properties 
+
+  JSON formatter
+
+
+
+
+
+
+  Why Seq?
+  - Centralized log management
+  - Powerful querying capabilities
+  - Real-time monitoring
+  - Integration with Serilog
+  - Install-Package Serilog.Sinks.Seq
+  - Configuration (appsettings.json , Program.cs )
+
+
+  Run Seq using Docker?
+  docker run --name seq -d -e ACCEPT_EULA=Y -p 8081:80 -p 5341:5341 datalust/seq
+

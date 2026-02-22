@@ -1,0 +1,11 @@
+21::51::12 [INF] Now listening on: https://localhost:7268
+21::51::12 [INF] Now listening on: http://localhost:5181
+21::51::12 [INF] Application started. Press Ctrl+C to shut down.
+21::51::12 [INF] Hosting environment: Development
+21::51::12 [INF] Content root path: E:\Content on Youtube\MasterCrudOp\MasterCrudOp
+21::51::18 [INF] start get all movies
+21::51::18 [FTL] oops
+21::51::18 [DBG] nothing much to say
+21::52::51 [INF] start get all movies
+21::52::51 [FTL] oops
+21::52::51 [DBG] nothing much to say
